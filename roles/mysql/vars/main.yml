@@ -1,0 +1,6 @@
+---
+mysql_packages:
+  - mariadb-server
+  - MySQL-python
+
+mysql_root_password: OvTvTHkuNh43

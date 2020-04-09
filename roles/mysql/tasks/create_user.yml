@@ -1,0 +1,17 @@
+---
+- name: Create DB
+  mysql_db:
+    name: wp_database
+    state: present
+
+- name: Create user
+  mysql_user:
+    name: wp_user1
+    password: OvTvTHkuNh43
+#    host: 185.86.76.220
+    state: present
+    priv: 'wp_database.*:ALL'
+#    host_all: yes
+    host: '185.86.77.220'
+
+#login_host через ітем і зміні можна всі ір прогнати

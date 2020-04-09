@@ -1,0 +1,5 @@
+---
+- name: Install Haproxy
+  yum:
+    name: haproxy
+    state: latest

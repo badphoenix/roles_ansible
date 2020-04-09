@@ -1,0 +1,32 @@
+---
+# tasks file for /etc/ansible/roles/glusterd
+- name: instal GlusterFS
+  yum:
+    name: centos-release-gluster
+    state: latest
+
+- name: install glusterfs-server
+  yum:
+    name: glusterfs-server
+    state: latest
+
+- name: Make sure a service is running
+  systemd:
+    state: started
+    name: glusterd.service
+
+- name:	Make sure a service is enable
+  systemd: 
+    enabled: yes
+    name: glusterd.service
+
+#- name: Add line to hosts
+#  lineinfile:
+#    dest: /etc/hosts
+#    line: maxretry = 3
+#    create: yes
+
+
+- include_tasks: firewalld.yml
+- include_tasks: create_pool.yml
+

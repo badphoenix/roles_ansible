@@ -1,0 +1,7 @@
+---
+- name: Install mysql
+  yum:
+    name: "{{ mysql_packages }}"
+    state: present
+    enablerepo: epel
+  register: rh_mysql_install_packages

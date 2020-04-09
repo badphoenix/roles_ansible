@@ -1,0 +1,17 @@
+---
+- name: open 80/tcp port
+  firewalld:
+    port: 80/tcp
+    permanent: yes
+    state: enabled
+
+- name: open 443/tcp port
+  firewalld:
+    port: 443/tcp
+    permanent: yes
+    state: enabled
+
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded

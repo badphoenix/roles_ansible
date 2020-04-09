@@ -1,0 +1,8 @@
+---
+- include_tasks: install.yml
+
+- include_tasks: create_directory.yml
+
+- include_tasks: copy_conf_file.yml
+
+- include_tasks: firewall.yml

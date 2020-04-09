@@ -1,0 +1,9 @@
+---
+- name: add firewalld for GlusterFS
+  - firewalld:
+    port: 24007-24008/tcp
+    state: enabled
+
+- name: firewalld reload
+  - systemd:
+    state: reload

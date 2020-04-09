@@ -1,0 +1,17 @@
+---
+- name: Create directory sites-available
+  file:
+    path: /etc/nginx/sites-available
+    state: directory
+
+- name: Create directory sites-enabled
+  file:
+    path: /etc/nginx/sites-enabled
+    state: directory
+
+- name: Create directory nginxconfig.io
+  file:
+    path: /etc/nginx/nginxconfig.io
+    state: directory
+
+

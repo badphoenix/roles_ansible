@@ -1,0 +1,40 @@
+---
+- name: Create /etc/default/haproxy
+  file:
+    path: /etc/default/haproxy
+    mode: '0644'
+    state: file
+
+- name: Add ENABLED=1 default
+  lineinfile:
+    path: /etc/default/haproxy
+    line: ENABLED=1
+    create: yes
+
+- name: Replace the word “http” 
+  replace:
+    path: /etc/haproxy/haproxy.cfg
+    regexp: 'mode * http'
+    replace: 'mode    tcp'
+
+- name: Replace the word “option” 
+  replace:
+    path: /etc/haproxy/haproxy.cfg
+    regexp: 'option * httplog'
+    replace: 'option          tcplog'
+
+- name: Add config  
+  lineinfile:
+    path: /etc/haproxy/haproxy.cfg
+    line: "{{ item }}"
+  loop:
+    - ' '
+    - 'frontend www'
+    - '    bind 194.9.70.52:80'
+    - '    default_backend wordpress-backend'
+    - ' '
+    - 'backend wordpress-backend'
+    - '    balance roundrobin'
+    - '    mode tcp'
+    - '    server wordpress-1 185.86.76.73:80 check'
+    - '    server wordpress-2 185.86.76.133:80 check'

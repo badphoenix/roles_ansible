@@ -1,0 +1,7 @@
+---
+# vars file for /etc/ansible/roles/php7
+
+list_of_packages: php-cli,php71-php,php-common,php-pear,php-pdo,php-mysqlnd,php-gd,php-mbstring,php-mcrypt,php-xml
+
+#php_install_packed: httpd php, php-common
+#,php-cli,php71-php,php-pear,php-pdo,php-mysqlnd,php-gd,php-mbstring,php-mcrypt,php-xml
