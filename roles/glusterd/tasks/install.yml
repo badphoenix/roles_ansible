@@ -1,0 +1,21 @@
+---
+- name: instal GlusterFS
+  yum:
+    name: centos-release-gluster
+    state: latest
+  when: ansible_facts['distribution'] == "CentOS"
+ 
+- name: install glusterfs-server
+  yum:
+    name: glusterfs-server
+    state: latest
+  when: ansible_facts['distribution'] == "CentOS"
+  notify: glusterFS restarted
+
+- name: instal GlusterFS
+  apt:
+    name: glusterfs-server
+    state: present
+  when: ansible_facts['distribution'] == "Ubuntu"
+  notify: glusterFS restarted
+

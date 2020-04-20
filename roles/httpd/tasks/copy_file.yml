@@ -1,27 +1,33 @@
 ---
 - name: Create directory sites-available
   file:
-    path: /etc/httpd/sites-available
+    path: /etc/{{ apache2_conf_file_path }}/sites-available
     state: directory
 
 - name: Create directory sites-enabled
   file:
-    path: /etc/httpd/sites-enabled
+    path: /etc/{{ apache2_conf_file_path }}/sites-enabled
     state: directory
 
 - name: copy artembf.pp.ua conf
   template:
     src: templates/artembf.pp.ua.conf
-    dest: /etc/httpd/sites-available/artembf.pp.ua.conf
+    dest: /etc/{{ apache2_conf_file_path }}/sites-available/artembf.pp.ua.conf
+
+#- name: copy artembf.pp.ua conf
+#  template:
+#    src: templates/artembf.pp.ua.conf
+#    dest: /etc/"{{ apache2_conf_file_path }}"/sites-enabled/artembf.pp.ua.conf
 
 - name: copy new httpd
   template:
-    src: templates/httpd.conf
-    dest: /etc/httpd/conf/httpd.conf
+    src: templates/{{ apache2_conf_name }}.conf
+    dest: /etc/{{ apache2_conf_file_path_main }}/{{ apache2_conf_name }}.conf
 
 - name: create link
   file:
-    src: /etc/httpd/sites-available/artembf.pp.ua.conf
-    dest: /etc/httpd/sites-enabled/artembf.pp.ua
+    src: /etc/{{ apache2_conf_file_path }}/sites-available/artembf.pp.ua.conf
+    dest: /etc/{{ apache2_conf_file_path }}/sites-enabled/artembf.pp.ua
     state: link
-
+  notify:
+    - httpd restarted

@@ -1,0 +1,16 @@
+---
+- name: install httpd
+  yum:
+    name: httpd
+    state: present
+  notify:
+    - httpd restarted
+  when: ansible_facts['distribution'] == "CentOS"
+
+- name: install apache2
+  apt:
+    name: apache2
+    state: present
+  notify:
+    - httpd restarted
+  when: ansible_facts['distribution'] == "Ubuntu"

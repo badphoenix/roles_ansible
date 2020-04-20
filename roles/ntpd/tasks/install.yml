@@ -1,0 +1,13 @@
+---
+- name: install ntp
+  yum:
+    name: ntp
+    state: latest
+  when: ansible_facts['distribution'] == "CentOS"
+
+- name: install ntp
+  apt:
+    name: ntp
+    state: present
+    update_cache: yes
+  when: ansible_facts['distribution'] == "Ubuntu"

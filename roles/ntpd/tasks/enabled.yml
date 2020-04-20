@@ -1,0 +1,24 @@
+---
+- name: enabled service ntpd
+  systemd:
+    name: ntpd
+    enabled: yes
+  when: ansible_facts['distribution'] == "CentOS"  
+
+- name: start service ntpd
+  systemd:
+    name: ntpd
+    state: started
+  when: ansible_facts['distribution'] == "CentOS"
+
+- name: enabled service ntpd
+  systemd:
+    name: ntp
+    enabled: yes
+  when: ansible_facts['distribution'] == "Ubuntu"
+
+- name: start service ntpd
+  systemd:
+    name: ntp
+    state: started
+  when: ansible_facts['distribution'] == "Ubuntu"

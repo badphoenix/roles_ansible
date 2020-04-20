@@ -1,2 +1,14 @@
 ---
 # handlers file for /etc/ansible/roles/glusterd
+- name: glusterFS restarted
+  systemd:
+    state: started
+    enabled: yes
+    name: glusterd.service
+
+#- name: Make sure a service is enable
+#  systemd:
+#    enabled: yes
+#    name: glusterd.service
+
+

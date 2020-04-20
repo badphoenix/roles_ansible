@@ -1,0 +1,16 @@
+---
+- name: add firewalld for GlusterFS Debian
+  ufw:
+    rule: allow
+    port: 24007:24008
+    proto: tcp
+    state: reloaded
+
+- name: add firewalld for GlusterFS Debian
+  ufw:
+    rule: allow
+    port: '49152'
+    proto: tcp
+    state: reloaded
+
+

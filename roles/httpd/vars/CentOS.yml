@@ -1,0 +1,4 @@
+---
+apache2_conf_file_path: httpd
+apache2_conf_file_path_main: httpd/conf/
+apache2_conf_name: httpd

@@ -1,4 +1,12 @@
 ---
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Define nginx_user.
+  set_fact:
+    nginx_user: "{{ __nginx_user }}"
+  when: nginx_user is not defined
+
 - name: Replace nginxg.conf
   template:
     src: templates/nginx.conf

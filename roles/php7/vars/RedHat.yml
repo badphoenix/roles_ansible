@@ -1,0 +1,13 @@
+---
+__php_packages:
+  - php-cli
+  - php71-php
+  - php-common
+  - php-pear 
+  - php-pdo 
+  - php-mysqlnd 
+  - php-gd
+  - php-mbstring
+  - php-mcrypt
+  - php-xml
+

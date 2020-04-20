@@ -1,6 +1,13 @@
 ---
-- name: install httpd
-  yum:
-    name: httpd
-    state: latest
-- include: 'copy_file.yml'
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Define httpd_user.
+  set_fact:
+    apache2_conf_file_path: "{{ apache2_conf_file_path }}"
+    apache2_conf_name: "{{ apache2_conf_name }}"
+    apache2_conf_file_path_main: "{{ apache2_conf_file_path_main  }}"
+
+- include: install.yml
+
+- include: copy_file.yml

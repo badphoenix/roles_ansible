@@ -3,3 +3,7 @@
 worker_processes: auto
 worker_connections: 2048
 client_max_body_size: 512M
+remi_repo_url: " https://rpms.remirepo.net/enterprise/remi-release-7.rpm"
+#remi_repo_url: "http://rpms.remirepo.net/enterprise/remi-release-{{ ansible_distribution_major_version }}.rpm"
+remi_repo_gpg_key_url: "http://rpms.remirepo.net/RPM-GPG-KEY-remi"
+

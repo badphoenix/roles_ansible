@@ -1,0 +1,35 @@
+---
+- name: mkdir /gluster-storage
+  file:
+    path: /gluster-storage
+    state: directory
+
+- name: create gluster volume
+  gluster_volume:
+    state: present
+    name: volume1
+    bricks: /gluster-storage
+    rebalance: yes
+    cluster:
+      - 45.129.97.71
+      - 45.129.97.60
+    force: true
+  run_once: true
+
+- name: start glusterfs volume
+  gluster_volume:
+    state: started
+    name: test1
+
+- name: mkdir mout dir
+  file:
+    path: /storage-pool
+    state: directory
+
+- name: Ensure Gluster volume is mounted.
+  mount:
+    name: /storage-pool
+    src: "{{ ansible_hostname }}:/volume1"
+    fstype: glusterfs
+    opts: "defaults,_netdev"
+    state: mounted

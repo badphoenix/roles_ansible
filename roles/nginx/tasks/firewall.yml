@@ -1,17 +1,41 @@
 ---
-- name: open 80/tcp port
+- name: open 80/tcp port CentOS
   firewalld:
     port: 80/tcp
     permanent: yes
     state: enabled
+  when: ansible_facts['distribution'] == "CentOS"
 
-- name: open 443/tcp port
+- name: open 443/tcp port CentOS
   firewalld:
     port: 443/tcp
     permanent: yes
     state: enabled
+  when: ansible_facts['distribution'] == "CentOS"
 
-- name: reload service firewalld
+- name: reload service firewalld CentOS
   systemd:
     name: firewalld
     state: reloaded
+  when: ansible_facts['distribution'] == "CentOS"
+
+
+- name: open 80/tcp port Ubuntu
+  ufw:
+    rule: allow
+    port: '80'
+    proto: tcp
+  when: ansible_facts['distribution'] == "Ubuntu"
+
+- name: open 443/tcp port Ubuntu
+  ufw:
+    rule: allow
+    port: '443'
+    proto: tcp
+  when: ansible_facts['distribution'] == "Ubuntu"
+
+- name: reload service ufw Ubuntu
+  ufw:
+    state: reloaded
+  when: ansible_facts['distribution'] == "Ubuntu"
+

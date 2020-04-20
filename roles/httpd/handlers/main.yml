@@ -1,2 +1,10 @@
 ---
-# handlers file for /etc/ansible/roles/httpd
+- name: httpd restarted
+  systemd:
+    name: "{{ apache2_conf_name }}"
+    state: restarted
+
+- name: httpd reload
+  systemd:
+    name: "{{ apache2_conf_name }}"
+    state: reloaded

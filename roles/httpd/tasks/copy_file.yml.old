@@ -1,0 +1,27 @@
+---
+- name: Create directory sites-available
+  file:
+    path: /etc/httpd/sites-available
+    state: directory
+
+- name: Create directory sites-enabled
+  file:
+    path: /etc/httpd/sites-enabled
+    state: directory
+
+- name: copy artembf.pp.ua conf
+  template:
+    src: templates/artembf.pp.ua.conf
+    dest: /etc/httpd/sites-available/artembf.pp.ua.conf
+
+- name: copy new httpd
+  template:
+    src: templates/httpd.conf
+    dest: /etc/httpd/conf/httpd.conf
+
+- name: create link
+  file:
+    src: /etc/httpd/sites-available/artembf.pp.ua.conf
+    dest: /etc/httpd/sites-enabled/artembf.pp.ua
+    state: link
+

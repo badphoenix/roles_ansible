@@ -1,15 +1,4 @@
 ---
-- name: install ntpd
-  yum:
-    name: ntp
-    state: latest  
+- include_tasks: install.yml
 
-- name: enabled service ntpd
-  systemd:
-    name: ntpd
-    enabled: yes
-
-- name: start se4rvice ntpd
-  systemd:
-    name: ntpd
-    state: started 
+- include_tasks: enabled.yml

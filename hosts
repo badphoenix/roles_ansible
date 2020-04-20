@@ -42,9 +42,10 @@
 
 ## db-[99:101]-node.example.com
 
-[db-node]
-194.9.70.52 #db node
+#[db-node]
+#194.9.70.52 #db node
 
 [web-node]
-185.86.76.73 #node1
+45.129.97.60 ansible_user=root #node1 
+45.129.97.71 ansible_user=root #node2
 #185.86.76.133 #node2
