@@ -1,0 +1,8 @@
+---
+- import_tasks: RedHat.yml
+  when: ansible_facts['distribution'] == "CentOS"
+
+- import_tasks: Debian.yml
+  when: ansible_facts['distribution'] == "Ubuntu"
+
+- import_tasks: copy_config.yml

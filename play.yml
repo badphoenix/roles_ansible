@@ -1,15 +1,15 @@
 ---
 - hosts: web-node
   roles:
-##   - epel
-##   - php7
-##   - glusterd
-##   - nginx
-##   - httpd
-##   - ntpd
+   - epel
+   - ntpd
+   - php7
+   - nginx
+   - httpd
+#   - glusterd
 #   - firewalld
 #- hosts: db-node
 #  roles:
 #    - epel
 #    - mysql
-    - haproxy
+#    - haproxy2

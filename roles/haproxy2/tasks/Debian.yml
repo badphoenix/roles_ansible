@@ -1,0 +1,9 @@
+---
+- name: add repo
+  apt_repository: 
+    repo: ppa:vbernat/haproxy-2.0
+
+- name: Install Haproxy
+  apt:
+    name: haproxy
+    state: present
