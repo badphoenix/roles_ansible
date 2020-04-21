@@ -6,10 +6,11 @@
    - php7
    - nginx
    - httpd
-#   - glusterd
+   - glusterd
 #   - firewalld
 #- hosts: db-node
 #  roles:
 #    - epel
 #    - mysql
 #    - haproxy2
+#    - test
