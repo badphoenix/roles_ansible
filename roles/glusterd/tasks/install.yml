@@ -9,13 +9,13 @@
   yum:
     name: glusterfs-server
     state: latest
+  notify: gluster start
   when: ansible_facts['distribution'] == "CentOS"
-  notify: glusterFS restarted
+# notify: glusterFS restarted
 
 - name: instal GlusterFS
   apt:
     name: glusterfs-server
     state: present
   when: ansible_facts['distribution'] == "Ubuntu"
-  notify: glusterFS restarted
-
+  notify: gluster start

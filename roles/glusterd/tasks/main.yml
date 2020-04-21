@@ -1,8 +1,16 @@
 ---
 # tasks file for /etc/ansible/roles/glusterd
-- include_tasks: add_repo.yml
+- import_tasks: add_repo.yml
 
-- include_tasks: install.yml
+- import_tasks: install.yml
+
+- import_tasks: ReadHat_firewalld.yml
+  when: ansible_distribution == "CentOS"
+
+- import_tasks: Debian_firewalld.yml
+  when: ansible_distribution == "Ubuntu"
+
+- import_tasks: add_to_host.yml
 
 - import_tasks: gluster_conf.yml
 
@@ -13,11 +21,11 @@
 #    create: yes
 
 
-- import_tasks: ReadHat_firewalld.yml
-  when: ansible_distribution == "CentOS"
+#- import_tasks: ReadHat_firewalld.yml
+#  when: ansible_distribution == "CentOS"
 
-- import_tasks: Debian_firewalld.yml
-  when: ansible_distribution == "Ubuntu"
+#- import_tasks: Debian_firewalld.yml
+#  when: ansible_distribution == "Ubuntu"
 
 #- include_tasks: create_pool.yml
 

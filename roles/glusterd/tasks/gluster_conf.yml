@@ -3,6 +3,13 @@
   file:
     path: /gluster-storage
     state: directory
+  notify: 
+  - gluster start
+
+- name: glusterFS started
+  service:
+    name: glusterd
+    state: restarted
 
 - name: create gluster volume
   gluster_volume:
@@ -11,6 +18,8 @@
     bricks: /gluster-storage
     rebalance: yes
     cluster:
+#      - for
+#      - for2
       - 45.129.97.71
       - 45.129.97.60
     force: true
@@ -19,7 +28,7 @@
 - name: start glusterfs volume
   gluster_volume:
     state: started
-    name: test1
+    name: volume1
 
 - name: mkdir mout dir
   file:
