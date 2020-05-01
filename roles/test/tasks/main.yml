@@ -1,0 +1,25 @@
+---
+##- name: test
+##  shell: stress-ng -c 0 -l 10
+# |
+#    set timeout 300
+#    stress-ng -c 0 -l 10
+##  async: 26
+##  poll: 0
+
+#    set timeout 300
+#    timeout: 300
+ 
+# tasks file for test
+#- name: test
+#  command: stress-ng -c 0 -l 10
+#  register: cmd_res
+#  retries: 500
+#  until: cmd_res | count == 0
+
+- name: test
+  shell: stress-ng -c 0 -l 1
+  register: results
+  until: results | success
+  retries: 10
+  delay: 3
